@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C657B9252830A3007DD436 /* HeroList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C657B8252830A3007DD436 /* HeroList.storyboard */; };
+		03C657BB252830B8007DD436 /* HeroListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657BA252830B8007DD436 /* HeroListViewController.swift */; };
+		03C657BD252830D6007DD436 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657BC252830D6007DD436 /* HeroModel.swift */; };
+		03C657BF25283489007DD436 /* HeroDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C657BE25283489007DD436 /* HeroDetail.storyboard */; };
+		03C657C12528349C007DD436 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657C02528349C007DD436 /* HeroDetailViewController.swift */; };
+		03C657C3252885DC007DD436 /* HeroListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657C2252885DC007DD436 /* HeroListPresenter.swift */; };
+		03C657C5252885F0007DD436 /* HeroListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657C4252885F0007DD436 /* HeroListInteractor.swift */; };
+		03C657C725288604007DD436 /* HeroListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657C625288604007DD436 /* HeroListRouter.swift */; };
+		03C657C925288815007DD436 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657C825288815007DD436 /* FilterCell.swift */; };
+		03C657CB25288829007DD436 /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657CA25288829007DD436 /* HeroCell.swift */; };
+		03C657CD252888CC007DD436 /* HeroListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657CC252888CC007DD436 /* HeroListProtocol.swift */; };
+		03C657CF252894ED007DD436 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657CE252894ED007DD436 /* Enums.swift */; };
 		03CB75F325276210007D19F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB75F225276210007D19F7 /* AppDelegate.swift */; };
 		03CB75F525276210007D19F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB75F425276210007D19F7 /* SceneDelegate.swift */; };
 		03CB75F725276210007D19F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB75F625276210007D19F7 /* ViewController.swift */; };
@@ -28,6 +40,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03C657B8252830A3007DD436 /* HeroList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroList.storyboard; sourceTree = "<group>"; };
+		03C657BA252830B8007DD436 /* HeroListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewController.swift; sourceTree = "<group>"; };
+		03C657BC252830D6007DD436 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
+		03C657BE25283489007DD436 /* HeroDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroDetail.storyboard; sourceTree = "<group>"; };
+		03C657C02528349C007DD436 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
+		03C657C2252885DC007DD436 /* HeroListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListPresenter.swift; sourceTree = "<group>"; };
+		03C657C4252885F0007DD436 /* HeroListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractor.swift; sourceTree = "<group>"; };
+		03C657C625288604007DD436 /* HeroListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListRouter.swift; sourceTree = "<group>"; };
+		03C657C825288815007DD436 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		03C657CA25288829007DD436 /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
+		03C657CC252888CC007DD436 /* HeroListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListProtocol.swift; sourceTree = "<group>"; };
+		03C657CE252894ED007DD436 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		03CB75EF25276210007D19F7 /* DotaHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotaHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CB75F225276210007D19F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03CB75F425276210007D19F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +84,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03C657B525283038007DD436 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				03C657B72528306B007DD436 /* HeroDetail */,
+				03C657B62528305A007DD436 /* HeroList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		03C657B62528305A007DD436 /* HeroList */ = {
+			isa = PBXGroup;
+			children = (
+				03C657B8252830A3007DD436 /* HeroList.storyboard */,
+				03C657BA252830B8007DD436 /* HeroListViewController.swift */,
+				03C657BC252830D6007DD436 /* HeroModel.swift */,
+				03C657C2252885DC007DD436 /* HeroListPresenter.swift */,
+				03C657C4252885F0007DD436 /* HeroListInteractor.swift */,
+				03C657C625288604007DD436 /* HeroListRouter.swift */,
+				03C657CC252888CC007DD436 /* HeroListProtocol.swift */,
+			);
+			path = HeroList;
+			sourceTree = "<group>";
+		};
+		03C657B72528306B007DD436 /* HeroDetail */ = {
+			isa = PBXGroup;
+			children = (
+				03C657BE25283489007DD436 /* HeroDetail.storyboard */,
+				03C657C02528349C007DD436 /* HeroDetailViewController.swift */,
+			);
+			path = HeroDetail;
+			sourceTree = "<group>";
+		};
 		03CB75E62527620F007D19F7 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +137,7 @@
 		03CB75F125276210007D19F7 /* DotaHeroes */ = {
 			isa = PBXGroup;
 			children = (
+				03C657B525283038007DD436 /* Modules */,
 				03CB75F225276210007D19F7 /* AppDelegate.swift */,
 				03CB75F425276210007D19F7 /* SceneDelegate.swift */,
 				03CB75F625276210007D19F7 /* ViewController.swift */,
@@ -89,6 +146,9 @@
 				03CB760025276213007D19F7 /* LaunchScreen.storyboard */,
 				03CB760325276213007D19F7 /* Info.plist */,
 				03CB75FB25276210007D19F7 /* DotaHeroes.xcdatamodeld */,
+				03C657C825288815007DD436 /* FilterCell.swift */,
+				03C657CA25288829007DD436 /* HeroCell.swift */,
+				03C657CE252894ED007DD436 /* Enums.swift */,
 			);
 			path = DotaHeroes;
 			sourceTree = "<group>";
@@ -183,6 +243,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C657BF25283489007DD436 /* HeroDetail.storyboard in Resources */,
+				03C657B9252830A3007DD436 /* HeroList.storyboard in Resources */,
 				03CB760225276213007D19F7 /* LaunchScreen.storyboard in Resources */,
 				03CB75FF25276213007D19F7 /* Assets.xcassets in Resources */,
 				03CB75FA25276210007D19F7 /* Main.storyboard in Resources */,
@@ -203,10 +265,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C657C725288604007DD436 /* HeroListRouter.swift in Sources */,
 				03CB75F725276210007D19F7 /* ViewController.swift in Sources */,
+				03C657C925288815007DD436 /* FilterCell.swift in Sources */,
+				03C657CB25288829007DD436 /* HeroCell.swift in Sources */,
+				03C657CF252894ED007DD436 /* Enums.swift in Sources */,
+				03C657BB252830B8007DD436 /* HeroListViewController.swift in Sources */,
+				03C657C12528349C007DD436 /* HeroDetailViewController.swift in Sources */,
 				03CB75FD25276210007D19F7 /* DotaHeroes.xcdatamodeld in Sources */,
+				03C657C3252885DC007DD436 /* HeroListPresenter.swift in Sources */,
 				03CB75F325276210007D19F7 /* AppDelegate.swift in Sources */,
 				03CB75F525276210007D19F7 /* SceneDelegate.swift in Sources */,
+				03C657CD252888CC007DD436 /* HeroListProtocol.swift in Sources */,
+				03C657BD252830D6007DD436 /* HeroModel.swift in Sources */,
+				03C657C5252885F0007DD436 /* HeroListInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
