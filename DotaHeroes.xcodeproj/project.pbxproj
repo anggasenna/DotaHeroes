@@ -12,6 +12,8 @@
 		0308430E252961950033658E /* HeroDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308430D252961950033658E /* HeroDetailRouter.swift */; };
 		03084310252961A40033658E /* HeroDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308430F252961A40033658E /* HeroDetailInteractor.swift */; };
 		03084312252987370033658E /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03084311252987370033658E /* Extentions.swift */; };
+		030843142529F30C0033658E /* AsyncFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030843132529F30C0033658E /* AsyncFetcher.swift */; };
+		030843162529F9B30033658E /* AsyncFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030843152529F9B30033658E /* AsyncFetcherOperation.swift */; };
 		03C657B9252830A3007DD436 /* HeroList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C657B8252830A3007DD436 /* HeroList.storyboard */; };
 		03C657BB252830B8007DD436 /* HeroListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657BA252830B8007DD436 /* HeroListViewController.swift */; };
 		03C657BD252830D6007DD436 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C657BC252830D6007DD436 /* HeroModel.swift */; };
@@ -50,6 +52,8 @@
 		0308430D252961950033658E /* HeroDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailRouter.swift; sourceTree = "<group>"; };
 		0308430F252961A40033658E /* HeroDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailInteractor.swift; sourceTree = "<group>"; };
 		03084311252987370033658E /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		030843132529F30C0033658E /* AsyncFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFetcher.swift; sourceTree = "<group>"; };
+		030843152529F9B30033658E /* AsyncFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFetcherOperation.swift; sourceTree = "<group>"; };
 		03C657B8252830A3007DD436 /* HeroList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroList.storyboard; sourceTree = "<group>"; };
 		03C657BA252830B8007DD436 /* HeroListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewController.swift; sourceTree = "<group>"; };
 		03C657BC252830D6007DD436 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				03C657CA25288829007DD436 /* HeroCell.swift */,
 				03C657CE252894ED007DD436 /* Enums.swift */,
 				03084311252987370033658E /* Extentions.swift */,
+				030843132529F30C0033658E /* AsyncFetcher.swift */,
+				030843152529F9B30033658E /* AsyncFetcherOperation.swift */,
 			);
 			path = DotaHeroes;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				03C657CF252894ED007DD436 /* Enums.swift in Sources */,
 				03084312252987370033658E /* Extentions.swift in Sources */,
 				03C657BB252830B8007DD436 /* HeroListViewController.swift in Sources */,
+				030843142529F30C0033658E /* AsyncFetcher.swift in Sources */,
 				03C657C12528349C007DD436 /* HeroDetailViewController.swift in Sources */,
 				03CB75FD25276210007D19F7 /* DotaHeroes.xcdatamodeld in Sources */,
 				03C657C3252885DC007DD436 /* HeroListPresenter.swift in Sources */,
@@ -297,6 +304,7 @@
 				03C657CD252888CC007DD436 /* HeroListProtocol.swift in Sources */,
 				03C657BD252830D6007DD436 /* HeroModel.swift in Sources */,
 				0308430C252961890033658E /* HeroDetailPresenter.swift in Sources */,
+				030843162529F9B30033658E /* AsyncFetcherOperation.swift in Sources */,
 				03C657C5252885F0007DD436 /* HeroListInteractor.swift in Sources */,
 				0308430A2529617C0033658E /* HeroDetailProtocols.swift in Sources */,
 			);

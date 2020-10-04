@@ -16,13 +16,29 @@ class HeroListViewController: UIViewController {
     var presenter: HeroListViewToPresenter?
     var heroes: [Hero] = []
     var roles: [HeroRole] = []
+    private let asyncFetcher = AsyncFetcher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         presenter?.viewDidLoad()
-        
+//        setupNoitf(message: "Network losts")
+    }
+    
+    func setupNoitf(message: String){
+        let wid = self.view.frame.width
+        let ye = self.view.frame.maxY - 45
+        let notif = UIView(frame: .init(x: 0, y: ye, width: wid, height: 45))
+        notif.backgroundColor = .red
+        notif.tag = 9
+        let label = UILabel(frame: .zero)
+        label.text = message
+        label.textColor = .white
+        notif.addSubview(label)
+        label.leadingAnchor.constraint(equalToSystemSpacingAfter: notif.leadingAnchor, multiplier: 8).isActive = true
+        label.centerYAnchor.constraint(equalToSystemSpacingBelow: notif.centerYAnchor, multiplier: 0).isActive = true
+        self.view.addSubview(notif)
     }
     
 
@@ -53,16 +69,65 @@ extension HeroListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return heroes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeroCell", for: indexPath) as! HeroCell
-        cell.heroImage.loadImage(url: heroes[indexPath.row].img)
+        let hero = heroes[indexPath.item]
+        cell.imgAddress = hero.img
+        let dom = URL(string: "https://api.opendota.com/api/herostats")
+        let fullUrl = URL(string: hero.img ?? "", relativeTo: dom)
+        if let fetchedData = asyncFetcher.fetchedData(for: fullUrl! as NSURL) {
+            cell.heroImage.image = fetchedData
+        } else {
+            cell.heroImage.image = UIImage()
+            
+            asyncFetcher.fetchAsync(fullUrl! as NSURL) { fetchedData in
+                DispatchQueue.main.async {
+                    guard cell.imgAddress == hero.img else { return }
+                    cell.heroImage.image = fetchedData
+                }
+            }
+        }
         cell.heroNameLabel.text = heroes[indexPath.row].localized_name
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            let hero = heroes[indexPath.row]
+            let dom = URL(string: "https://api.opendota.com/api/herostats")
+            let fullUrl = URL(string: hero.img ?? "", relativeTo: dom)
+            asyncFetcher.fetchAsync(fullUrl! as NSURL)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            let hero = heroes[indexPath.row]
+            let dom = URL(string: "https://api.opendota.com/api/herostats")
+            let fullUrl = URL(string: hero.img ?? "", relativeTo: dom)
+            asyncFetcher.cancelFetch(fullUrl! as NSURL)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.width / 3) - 2
+        let height = (collectionView.frame.height / 2) - 1
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -81,7 +146,7 @@ extension HeroListViewController: HeroListPresenterToView {
     }
     
     func showError(message: String) {
-        print(message)
+        setupNoitf(message: message)
     }
     
     func showFilter(data: [HeroRole]) {

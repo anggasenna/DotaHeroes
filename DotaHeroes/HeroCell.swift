@@ -14,6 +14,7 @@ class HeroCell: UICollectionViewCell {
     @IBOutlet weak var heroNameLabel: UILabel!
     
     let cachedImage = NSCache<AnyObject, UIImage>()
+    var imgAddress: String?
     
     func loadImage(url: String) {
         let home = URL(string: "https://api.opendota.com")

@@ -103,9 +103,9 @@ class HeroListInteractor: HeroListPresenterToInteractor {
             presenter?.filterHeroesSuccess(data: heroes)
         } else {
             filteredHeroes = heroes.filter({ (hero) -> Bool in
-                return (hero.roles?.contains(type))!
+                return (hero.roles?.contains(type)) ?? false
             })
-            print("count: \(filteredHeroes.count)")
+            
             presenter?.filterHeroesSuccess(data: filteredHeroes)
         }
     }
