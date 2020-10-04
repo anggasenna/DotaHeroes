@@ -2,7 +2,7 @@
 //  HeroDetailViewController.swift
 //  DotaHeroes
 //
-//  Created by BRI on 03/10/20.
+//  Created by Angga on 03/10/20.
 //  Copyright © 2020 Angga. All rights reserved.
 //
 
@@ -60,7 +60,7 @@ extension HeroDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimilarHeroCell", for: indexPath) as! SimilarHeroCell
         let hero = similarHeroes[indexPath.item]
         cell.imgAddress = hero.img
-        let dom = URL(string: "https://api.opendota.com/api/herostats")
+        let dom = URL(string: "https://api.opendota.com")
         let fullUrl = URL(string: hero.img ?? "", relativeTo: dom)
         if let fetchedData = asyncFetcher.fetchedData(for: fullUrl! as NSURL) {
             cell.heroImage.image = fetchedData
@@ -79,7 +79,7 @@ extension HeroDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let hero = similarHeroes[indexPath.row]
-            let dom = URL(string: "https://api.opendota.com/api/herostats")
+            let dom = URL(string: "https://api.opendota.com")
             let fullUrl = URL(string: hero.img ?? "", relativeTo: dom)
             asyncFetcher.fetchAsync(fullUrl! as NSURL)
         }
@@ -88,7 +88,7 @@ extension HeroDetailViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let hero = similarHeroes[indexPath.row]
-            let dom = URL(string: "https://api.opendota.com/api/herostats")
+            let dom = URL(string: "https://api.opendota.com")
             let fullUrl = URL(string: hero.img ?? "", relativeTo: dom)
             asyncFetcher.cancelFetch(fullUrl! as NSURL)
         }

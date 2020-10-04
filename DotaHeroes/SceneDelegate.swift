@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  DotaHeroes
 //
-//  Created by BRI on 02/10/20.
+//  Created by Angga on 02/10/20.
 //  Copyright © 2020 Angga. All rights reserved.
 //
 

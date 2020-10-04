@@ -2,7 +2,7 @@
 //  HeroDetailProtocols.swift
 //  DotaHeroes
 //
-//  Created by BRI on 04/10/20.
+//  Created by Angga on 04/10/20.
 //  Copyright © 2020 Angga. All rights reserved.
 //
 
