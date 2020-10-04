@@ -15,12 +15,12 @@ protocol HeroListViewToPresenter {
     var router: HeroListPresenterToRouter? {get set}
     func viewDidLoad()
     func filterHeroes(type: HeroRole)
-    func showHeroDetail()
+    func showHeroDetail(view: HeroListPresenterToView, data: Hero)
 }
 
 protocol HeroListPresenterToRouter {
     static func createModule() -> UINavigationController
-    func pushToHeroDetail()
+    func pushToHeroDetail(view: HeroListPresenterToView, data: Hero)
 }
 
 protocol HeroListPresenterToInteractor {

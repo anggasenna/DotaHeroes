@@ -48,7 +48,7 @@ extension HeroListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationItem.prompt = roles[indexPath.row].rawValue
+        self.title = roles[indexPath.row].rawValue
         presenter?.filterHeroes(type: roles[indexPath.row])
     }
 }
@@ -60,12 +60,14 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeroCell", for: indexPath) as! HeroCell
-        cell.loadImage(url: heroes[indexPath.row].img ?? "")
+        cell.heroImage.loadImage(url: heroes[indexPath.row].img)
         cell.heroNameLabel.text = heroes[indexPath.row].localized_name
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.showHeroDetail(view: self, data: heroes[indexPath.item])
+    }
     
 }
 
@@ -85,7 +87,7 @@ extension HeroListViewController: HeroListPresenterToView {
     func showFilter(data: [HeroRole]) {
         roles = data
         filterTableView.reloadData()
-        self.navigationItem.prompt = roles.last?.rawValue
+        self.title = roles.last?.rawValue
     }
     
 }

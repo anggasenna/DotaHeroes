@@ -29,8 +29,10 @@ class HeroListRouter: HeroListPresenterToRouter {
         return nav
     }
     
-    func pushToHeroDetail() {
-        
+    func pushToHeroDetail(view: HeroListPresenterToView, data: Hero) {
+        let vc = view as! UIViewController
+        let detailView = HeroDetailRouter.createModule(data: data)
+        vc.navigationController?.pushViewController(detailView, animated: true)
     }
     
     
