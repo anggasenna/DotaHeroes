@@ -20,6 +20,7 @@ class HeroListPresenter: HeroListViewToPresenter {
         interactor?.loadHeroes()
         interactor?.loadFilter()
     }
+
     func showHeroDetail(view navigationController: HeroListPresenterToView, data: Hero) {
         router?.pushToHeroDetail(view: navigationController, data: data)
     }
@@ -31,7 +32,7 @@ class HeroListPresenter: HeroListViewToPresenter {
 }
 
 extension HeroListPresenter: HeroListInteractorToPresenter {
-    
+
     func fetchHeroSuccess(data: [Hero]) {
         view?.showHeroes(data: data)
     }

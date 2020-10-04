@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class HeroDetailPresenter: HeroDetailViewToPresenter {
-    
-    
-    
+
     var view: HeroDetailPresenterToView?
     
     var interactor: HeroDetailPresenterToInteractor?
@@ -23,10 +21,6 @@ class HeroDetailPresenter: HeroDetailViewToPresenter {
         interactor?.loadSimilarHeroes(with: data)
     }
     
-    func getHeroImage(url: String?) {
-        interactor?.loadHeroImage(url: url)
-    }
-    
 }
 
 extension HeroDetailPresenter: HeroDetailInteractorToPresenter {
@@ -34,11 +28,7 @@ extension HeroDetailPresenter: HeroDetailInteractorToPresenter {
     func fetchSimilarHeroSuccess(data: [Hero]) {
         view?.showSimilarHeroes(data: data)
     }
-    
-    func fetchImageSuccess(img: UIImage) {
-        view?.showImage(img: img)
-    }
-    
+
     func fetchHeroFailed(message: String) {
         view?.showError(message: message)
     }

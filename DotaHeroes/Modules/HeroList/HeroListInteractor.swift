@@ -48,48 +48,51 @@ class HeroListInteractor: HeroListPresenterToInteractor {
                 presenter?.fetchHeroSuccess(data: heroes)
             }
         } catch {
-            print("error")
+            presenter?.fetchHeroFailed(message: "Parsing Error")
         }
         
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            let jsonDecoder = JSONDecoder()
-            guard let data = data else { return }
-            do {
-                self?.heroes = try jsonDecoder.decode([Hero].self, from: data)
-                let deleteReq = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            if error == nil {
+                let jsonDecoder = JSONDecoder()
+                guard let data = data else { return }
                 do {
-                    try managedContext.execute(deleteReq)
-                    try managedContext.save()
-                } catch {
-                    print("delete error")
-                }
-                if let heroesList = self?.heroes {
-                    for hero in heroesList {
-                        let newHero = NSManagedObject(entity: cdHero, insertInto: managedContext)
-                        newHero.setValue(hero.id, forKey: "id")
-                        newHero.setValue(hero.attack_type, forKey: "attack_type")
-                        newHero.setValue(hero.base_attack_max, forKey: "base_attack_max")
-                        newHero.setValue(hero.base_health, forKey: "base_health")
-                        newHero.setValue(hero.base_mana, forKey: "base_mana")
-                        newHero.setValue(hero.img, forKey: "img")
-                        newHero.setValue(hero.localized_name, forKey: "localized_name")
-                        newHero.setValue(hero.move_speed, forKey: "move_speed")
-                        newHero.setValue(hero.primary_attr, forKey: "primary_attr")
-                        let roles = hero.roles?.map({ $0.rawValue })
-                        newHero.setValue(roles, forKey: "roles")
-                    }
-                    
+                    self?.heroes = try jsonDecoder.decode([Hero].self, from: data)
+                    let deleteReq = NSBatchDeleteRequest(fetchRequest: fetchRequest)
                     do {
+                        try managedContext.execute(deleteReq)
                         try managedContext.save()
                     } catch {
-                        print("error")
+                        self?.presenter?.fetchHeroFailed(message: "Parsing Error")
                     }
+                    if let heroesList = self?.heroes {
+                        for hero in heroesList {
+                            let newHero = NSManagedObject(entity: cdHero, insertInto: managedContext)
+                            newHero.setValue(hero.id, forKey: "id")
+                            newHero.setValue(hero.attack_type, forKey: "attack_type")
+                            newHero.setValue(hero.base_attack_max, forKey: "base_attack_max")
+                            newHero.setValue(hero.base_health, forKey: "base_health")
+                            newHero.setValue(hero.base_mana, forKey: "base_mana")
+                            newHero.setValue(hero.img, forKey: "img")
+                            newHero.setValue(hero.localized_name, forKey: "localized_name")
+                            newHero.setValue(hero.move_speed, forKey: "move_speed")
+                            newHero.setValue(hero.primary_attr, forKey: "primary_attr")
+                            let roles = hero.roles?.map({ $0.rawValue })
+                            newHero.setValue(roles, forKey: "roles")
+                        }
+                        
+                        do {
+                            try managedContext.save()
+                        } catch {
+                            self?.presenter?.fetchHeroFailed(message: "Parsing Error")
+                        }
+                    }
+                    self?.presenter?.fetchHeroSuccess(data: self?.heroes ?? [])
+                } catch {
+                    self?.presenter?.fetchHeroFailed(message: "Parsing Error")
                 }
-                self?.presenter?.fetchHeroSuccess(data: self?.heroes ?? [])
-            } catch {
-                self?.presenter?.fetchHeroFailed(message: "Failed")
+            } else {
+                self?.presenter?.fetchHeroFailed(message: error?.localizedDescription ?? "Error")
             }
-            
         }.resume()
     }
     

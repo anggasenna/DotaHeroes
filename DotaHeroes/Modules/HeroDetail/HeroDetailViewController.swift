@@ -113,22 +113,21 @@ extension HeroDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension HeroDetailViewController: HeroDetailPresenterToView {
     
-    
     func showSimilarHeroes(data: [Hero]) {
         similarHeroes = data
         DispatchQueue.main.async {
             self.similarHeroesCollectionView.reloadData()
         }
     }
-    
-    func showImage(img: UIImage) {
-//        DispatchQueue.main.async {
-//            self.heroImage.image = img
-//        }
-    }
-    
+
     func showError(message: String) {
-        print(message)
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default){ action in
+            alert.dismiss(animated: true, completion: nil)
+        })
+        DispatchQueue.main.async {
+            self.present(alert,animated: true)
+        }
     }
     
     

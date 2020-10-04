@@ -50,29 +50,7 @@ class HeroDetailInteractor: HeroDetailPresenterToInteractor {
             }
             presenter?.fetchSimilarHeroSuccess(data: heroes)
         } catch {
-            print("error")
+            presenter?.fetchHeroFailed(message: "Parsing Error")
         }
     }
-    
-    func loadHeroImage(url: String?) {
-        let home = NSURL(string: "https://api.opendota.com")
-        guard let fullUrl = URL(string: url ?? "", relativeTo: home as URL?) else { return }
-        let cachedImage = NSCache<NSURL, UIImage>()
-        
-        if let image = cachedImage.object(forKey: fullUrl as NSURL) {
-            presenter?.fetchImageSuccess(img: image)
-        } else {
-            var request = URLRequest(url: fullUrl)
-            request.httpMethod = "GET"
-            
-            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-                guard let responseData = data else { return }
-                if let img = UIImage(data: responseData) {
-                    cachedImage.setObject(img, forKey: fullUrl as NSURL)
-                    self?.presenter?.fetchImageSuccess(img: img)
-                }
-            }.resume()
-        }
-    }
-
 }

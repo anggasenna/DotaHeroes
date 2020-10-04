@@ -14,7 +14,6 @@ protocol HeroDetailViewToPresenter {
     var interactor: HeroDetailPresenterToInteractor? {get set}
     var router: HeroDetailPresenterToRouter? {get set}
     func viewDidLoad(with data: Hero?)
-    func getHeroImage(url: String?)
 }
 
 protocol HeroDetailPresenterToRouter {
@@ -24,18 +23,15 @@ protocol HeroDetailPresenterToRouter {
 protocol HeroDetailPresenterToInteractor {
     var presenter: HeroDetailInteractorToPresenter? {get set}
     func loadSimilarHeroes(with data: Hero?)
-    func loadHeroImage(url: String?)
 }
 
 protocol HeroDetailInteractorToPresenter {
     func fetchSimilarHeroSuccess(data: [Hero])
-    func fetchImageSuccess(img: UIImage)
     func fetchHeroFailed(message: String)
 }
 
 protocol HeroDetailPresenterToView {
     func showSimilarHeroes(data: [Hero])
-    func showImage(img: UIImage)
     func showError(message: String)
 }
 

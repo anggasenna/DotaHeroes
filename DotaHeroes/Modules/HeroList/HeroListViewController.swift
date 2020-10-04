@@ -23,25 +23,8 @@ class HeroListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         presenter?.viewDidLoad()
-//        setupNoitf(message: "Network losts")
     }
     
-    func setupNoitf(message: String){
-        let wid = self.view.frame.width
-        let ye = self.view.frame.maxY - 45
-        let notif = UIView(frame: .init(x: 0, y: ye, width: wid, height: 45))
-        notif.backgroundColor = .red
-        notif.tag = 9
-        let label = UILabel(frame: .zero)
-        label.text = message
-        label.textColor = .white
-        notif.addSubview(label)
-        label.leadingAnchor.constraint(equalToSystemSpacingAfter: notif.leadingAnchor, multiplier: 8).isActive = true
-        label.centerYAnchor.constraint(equalToSystemSpacingBelow: notif.centerYAnchor, multiplier: 0).isActive = true
-        self.view.addSubview(notif)
-    }
-    
-
 }
 
 extension HeroListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -137,7 +120,7 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 extension HeroListViewController: HeroListPresenterToView {
-    
+
     func showHeroes(data: [Hero]) {
         heroes = data
         DispatchQueue.main.async {
@@ -146,7 +129,14 @@ extension HeroListViewController: HeroListPresenterToView {
     }
     
     func showError(message: String) {
-        setupNoitf(message: message)
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default){ action in
+            alert.dismiss(animated: true, completion: nil)
+        })
+        DispatchQueue.main.async {
+            self.present(alert,animated: true)
+        }
+        
     }
     
     func showFilter(data: [HeroRole]) {
